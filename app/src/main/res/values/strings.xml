@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Help</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="beginning_message">Hi! How are you today?</string>
+    <string name="app_real_name">TravelJournal</string>
+</resources>
