@@ -1,2 +1,1 @@
 # travelJournal
-Aplicație în Android
