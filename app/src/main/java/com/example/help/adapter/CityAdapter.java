@@ -1,5 +1,7 @@
 package com.example.help.adapter;
 
+import android.app.FragmentManager;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.help.R;
 import com.example.help.useful.City;
 
@@ -16,11 +18,13 @@ import java.util.List;
 
 public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder>{
 
-    public CityAdapter(List<City> cities) {
+    public CityAdapter(List<City> cities, Context context) {
+        this.context = context;
         this.cities = cities;
     }
 
     private List<City> cities;
+    private Context context;
 
     @NonNull
     @Override
@@ -62,6 +66,13 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
             notifyDataSetChanged();
         });
 
+        holder.view.setOnLongClickListener(v -> {
+            FragmentManager manager = ((AppCompatActivity)context).getFragmentManager();
+            DialogFragment info = new DialogFragment();
+            info.show(manager, "Change");
+            return false;
+        });
+
     }
 
     @Override
@@ -75,6 +86,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
         private TextView destination;
         private TextView price;
         private ImageView favorite;
+        private View view;
 
         public CityViewHolder(@NonNull View itemView) {
 
@@ -83,7 +95,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
             destination = itemView.findViewById(R.id.destination);
             price = itemView.findViewById(R.id.price);
             favorite = itemView.findViewById(R.id.favorite);
-
+            this.view = itemView;
 
         }
     }

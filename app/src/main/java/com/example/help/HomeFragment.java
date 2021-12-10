@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.help.adapter.CityAdapter;
+import com.example.help.adapter.DialogFragment;
 import com.example.help.useful.City;
 import com.example.help.useful.DataSource;
 
@@ -42,7 +43,7 @@ public class HomeFragment extends Fragment {
         List<City> cityList = new DataSource().getListCities();
 
         //set adapter
-        CityAdapter cityAdapter = new CityAdapter(cityList);
+        CityAdapter cityAdapter = new CityAdapter(cityList, getContext());
         recyclerView.setAdapter(cityAdapter);
 
         return root;
